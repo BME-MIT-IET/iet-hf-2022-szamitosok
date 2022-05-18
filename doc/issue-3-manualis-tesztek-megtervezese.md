@@ -60,7 +60,7 @@ Lépések utáni elvárások:
 * 8. lépés: Ha van 3 különböző színű alapanyagunk mit épits gomb megnyomása, robot kivalasztasa, craft gomb megnyomása. Ha nincs akkor vissza a 4. lépéshez.
 * 9. lépés: Astronaut gomb megnyomása, jatekos kiválasztása, a tulajdonságoknál azon a számú aszteroidára kattintás ahol jatekos helye van.
 
-
+Lépések utáni elvárások:
 
 * 1. lépés után: Új ablak feljön ahova a jatekos nevét tudjuk beírni
 * 2. lépés után: A játék elindul, új ablak jön létre ahol látunk sokféle adatot. Az Astronaut gombra kattintva látjuk az elnevezett játékost.
