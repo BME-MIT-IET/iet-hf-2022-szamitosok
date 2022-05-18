@@ -1,5 +1,7 @@
+package Model;
+
 /*
-A Material osztály leszármazottja
+A Model.Material osztály leszármazottja
 Saját ID-vel rendelkezik
 Felüldefiniálja a mine() és nearSunEffect() metódusokat
 
@@ -11,10 +13,7 @@ public class Uranium extends Material {
 	//Bányászat közben meghívja a nearSunEffect()-et, ellenőrzi, hogy van e még felette kőzetréteg
 	public void mined() {
 		Logger.call("uranium.mined","");
-		//szerintem ez ide nem kell
-		/*if(asteroid.getNearSun()) {this.nearSunEffect();}
 
-		else {asteroid.setCore(null);}*/
 		asteroid.setCore(null);
 
 		Logger.ret("");

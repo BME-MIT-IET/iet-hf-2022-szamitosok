@@ -1,3 +1,5 @@
+package Model;
+
 public class Logger {
 
 	private static int d=0;
@@ -34,18 +36,18 @@ public class Logger {
 
 fnc(int a, asd b, String c) {
 	//first call logging
-	Logger.call("fnc", "int a=" +a+ ", asd b=" +b.toString()+ ", String c=" +c );
+	Model.Logger.call("fnc", "int a=" +a+ ", asd b=" +b.toString()+ ", String c=" +c );
 
 	if(a) {
-		Logger.ret("" + 8);
+		Model.Logger.ret("" + 8);
 		return 8;
 	} else {
-		Logger.ret("" + asd.x+Integer.parseint(c));
+		Model.Logger.ret("" + asd.x+Integer.parseint(c));
 		return asd.x+Integer.parseint(c);
 	}
 
 	//ret for each return
-	Logger.ret("" + -1);
+	Model.Logger.ret("" + -1);
 	return -1;
 }
 

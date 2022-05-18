@@ -1,6 +1,9 @@
+package View;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -56,7 +59,7 @@ public class MainPanel extends JFrame {
 	class ButtonActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			if(e.getActionCommand() == "start") {
+			if(Objects.equals(e.getActionCommand(), "start")) {
 				if(Integer.parseInt(tf.getText()) > 5 || Integer.parseInt(tf.getText()) < 1) {
 					text.setText("<html><center><h1>Üdvözöljük!</h1></center>"
 							+ "<br/>Kérem adja meg, hogy hány játékossal szeretne játékot létrehozni:"

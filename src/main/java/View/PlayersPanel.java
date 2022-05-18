@@ -1,8 +1,11 @@
+package View;
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -10,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import Model.*;
 
 public class PlayersPanel extends JFrame{
 	private static final long serialVersionUID = -645382040089403747L;
@@ -59,7 +63,7 @@ public class PlayersPanel extends JFrame{
 	 */
 	class ButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			if(e.getActionCommand() == "ok") {
+			if(Objects.equals(e.getActionCommand(), "ok")) {
 				boolean isUres = false;
 				for(int i = 0; i < playercnt; i++) {
 					if(tfs[i].getText().equals(""))

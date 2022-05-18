@@ -1,5 +1,7 @@
+package Model;
+
 /*
-A Material osztály leszármazottja
+A Model.Material osztály leszármazottja
 Saját ID-vel rendelkezik
 
 */

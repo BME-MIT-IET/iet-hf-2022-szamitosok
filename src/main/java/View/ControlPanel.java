@@ -1,5 +1,8 @@
+package View;
+
+import Model.*;
+
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
@@ -46,7 +49,7 @@ public class ControlPanel extends JPanel{
         astronauts=game.getAstronauts();
         theKivalasztott=null;
         mnAstronaut.removeAll();
-        mnAstronaut.setText("Astronaut");
+        mnAstronaut.setText("Model.Astronaut");
         boolean newround=true;
         for(Astronaut a: astronauts)
           newround = newround && aKorbenLepettMar.contains(a);
@@ -99,7 +102,7 @@ public class ControlPanel extends JPanel{
     private String nameOfAsteroid(Place ast) {
       if(asteroidField!=null) {
         int id=asteroidField.indexOf((Asteroid)ast);
-        if(id>=0)return "Asteroid "+(id+1);
+        if(id>=0)return "Model.Asteroid "+(id+1);
       }
       return (""+ast).replace("@", " #");
     }
@@ -112,7 +115,7 @@ public class ControlPanel extends JPanel{
       int i=0;
       Color c=mat2col(null);
       mnAster.removeAll();
-      mnAster.setText("Place");
+      mnAster.setText("Model.Place");
       if(a==null) {
         lblAsterID.setText("");
         mnCrft.setText("Mit epits");
@@ -196,7 +199,7 @@ public class ControlPanel extends JPanel{
       menuBar.setBounds(100, 12, 170, 23);
       selectPanel.add(menuBar);
 
-      mnAstronaut = new JMenu("Astronaut");
+      mnAstronaut = new JMenu("Model.Astronaut");
       menuBar.add(mnAstronaut);
     }
     public void initPropertyPanel(){
@@ -256,7 +259,7 @@ public class ControlPanel extends JPanel{
 
       JMenuBar astermenubar = new JMenuBar();
 
-      mnAster = new JMenu("Asteroid");
+      mnAster = new JMenu("Model.Asteroid");
       astermenubar.add(mnAster);
 
       astermenubar.setBounds(120, 32, 70, 15);

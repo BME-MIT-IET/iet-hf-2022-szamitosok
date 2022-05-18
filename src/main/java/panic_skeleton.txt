@@ -7,7 +7,7 @@
 6 - Build a robot
 7 - Build a gate
 8 - Launch Portal instead (Deploy your gate)
-9 - Let's watch the world burn! (Uranium in open cored asteroid, near sun)
+9 - Let's watch the world burn! (Model.Uranium in open cored asteroid, near sun)
 10 - Become a serial killer now! (Control near sun)
 11 - Purge (Control solar strom)
 12 - Boil rice (ice sublimates near sun)
