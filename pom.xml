@@ -43,5 +43,53 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
+    <!-- Provide defaults for all modules to use -->
+    <dependencyManagement>
+        <dependencies>
 
+            <!-- Testing -->
+
+            <!-- JUnit for testing -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- FEST for fluent test assertions -->
+            <dependency>
+                <groupId>org.easytesting</groupId>
+                <artifactId>fest-assert-core</artifactId>
+                <version>2.0M10</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- FEST for Swing UI testing -->
+            <dependency>
+                <groupId>org.easytesting</groupId>
+                <artifactId>fest-swing</artifactId>
+                <version>1.2.1</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- All modules will have these dependencies -->
+    <dependencies>
+        <!-- Testing -->
+
+        <!-- JUnit for testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+        <!-- FEST for fluent test assertions -->
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-swing</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+    </dependencies>
 </project>
