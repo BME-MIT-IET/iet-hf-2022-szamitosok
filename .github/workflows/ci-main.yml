@@ -31,7 +31,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn -B package org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=BME-MIT-IET_iet-hf-2022-szamitosok --no-transfer-progress
+      run: mvn -B package -DskipTests org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=BME-MIT-IET_iet-hf-2022-szamitosok --no-transfer-progress
     - name: Upload built jar
       uses: actions/upload-artifact@v3
       with:
