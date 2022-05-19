@@ -34,11 +34,13 @@ public class MainPanel extends JFrame {
 		//Kozepso panel
 		jp_mid = new JPanel();
 		tf = new JTextField(2);
+		tf.setName("numberOfPlayersTF");
 		jp_mid.add(tf);
 
 		//Also panel
 		jp_bot = new JPanel();
 		JButton bt_start = new JButton("Indítás");
+		bt_start.setName("startBT");
 		bt_start.setActionCommand("start");
 		ButtonActionListener bal = new  ButtonActionListener();
 		bt_start.addActionListener(bal);
@@ -67,6 +69,7 @@ public class MainPanel extends JFrame {
 					pack();
 				} else {
 					PlayersPanel pp = new PlayersPanel(Integer.parseInt(tf.getText()));
+					pp.setName("playersF");
 					setVisible(false);
 					pp.setVisible(true);
 				}

@@ -39,6 +39,7 @@ public class PlayersPanel extends JFrame{
 		for(int i = 0; i < playercnt; i++) {
 			labels[i] = new JLabel(String.valueOf(i+1) + ". játékos: ");
 			tfs[i] = new JTextField(30);
+			tfs[i].setName("PlayerName"+i+"TF");
 			jp.add(labels[i]);
 			jp.add(tfs[i]);
 		}
