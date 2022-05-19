@@ -1,3 +1,5 @@
+import Model.*;
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -72,35 +74,35 @@ public class Proto {
 
 
 	/*
-	* global store for Astronaut s
+	* global store for Model.Astronaut s
 	* syncronized with game entities
 	* required for commands and modifications
 	*/
 	private static ArrayList<Astronaut> astronauts	= new ArrayList<>();
 
 	/*
-	* global store for Asteroid s
+	* global store for Model.Asteroid s
 	* syncronized with game AsteroidField
 	* required for commands and modifications
 	*/
 	private static ArrayList<Asteroid>	 asteroids	= new ArrayList<>();
 
 	/*
-	* global store for Robot s
+	* global store for Model.Robot s
 	* syncronized with game entities
 	* required for commands and modifications
 	*/
 	private static ArrayList<Robot>         robots	= new ArrayList<>();
 
 	/*
-	* global store for Ufo s
+	* global store for Model.Ufo s
 	* syncronized with game entities
 	* required for commands and modifications
 	*/
 	private static ArrayList<Ufo> 	        	ufos	= new ArrayList<>();
 
 	/*
-	* global store for Gate s
+	* global store for Model.Gate s
 	* syncronized with game AsteroidFields registred gates
 	* required for commands and modifications
 	*/
@@ -108,7 +110,7 @@ public class Proto {
 
 
 	/**
-	* Create Material by lowercase name
+	* Create Model.Material by lowercase name
 	*
 	* @param	s		name of material type (ex.: iron, uranium)
 	* @return    	a new instance of material with specific type, or null
@@ -129,7 +131,7 @@ public class Proto {
 	/**
 	* Determinate name of material by its type
 	*
-	* @param	m		Material object
+	* @param	m		Model.Material object
 	* @return    	a lowercase string by type, or 'null' (ex: "iron", "ice")
 	*/
 	private static String materialToString(Material m) {
@@ -137,7 +139,7 @@ public class Proto {
 	}
 
 	/*
-	* override AsteroidField of Game object g
+	* override AsteroidField of Model.Game object g
 	*/
 	private static void gameSetAsteroidArray() {
 		ArrayList<Asteroid> ori=g.getAsteroids();
@@ -147,7 +149,7 @@ public class Proto {
 	}
 
 	/*
-	* override astronaut collection of Game object g
+	* override astronaut collection of Model.Game object g
 	*/
 	private static void gameSetAstronautArray() {
 		ArrayList<Astronaut> ori=g.getAstronauts();
@@ -157,7 +159,7 @@ public class Proto {
 	}
 
 	/*
-	* override robot collection of Game object g
+	* override robot collection of Model.Game object g
 	*/
 	private static void gameSetRobotArray() {
 		ArrayList<Robot> ori=g.getRobots();
@@ -167,7 +169,7 @@ public class Proto {
 	}
 
 	/*
-	* override ufo collection of Game object g
+	* override ufo collection of Model.Game object g
 	*/
 	private static void gameSetUfoArray() {
 		ArrayList<Ufo> ori=g.getUfos();
@@ -183,21 +185,21 @@ public class Proto {
 	*/
 	private static void syncArrays() {
 		ArrayList<Entity> entlist=g.getEntities();
-//		ArrayList<Astronaut> astrolist=g.getAstronauts();
+//		ArrayList<Model.Astronaut> astrolist=g.getAstronauts();
 		for(int i=0; i<astronauts.size(); i++)
 			if(!entlist.contains(astronauts.get(i)))
 				astronauts.set(i, null);
-//		ArrayList<Robot> robolist=g.getRobots();
+//		ArrayList<Model.Robot> robolist=g.getRobots();
 		for(int i=0; i<robots.size(); i++)
 			if(!entlist.contains(robots.get(i)))
 				robots.set(i, null);
-//		ArrayList<Ufo> ufolist=g.getUfos();
+//		ArrayList<Model.Ufo> ufolist=g.getUfos();
 		for(int i=0; i<ufos.size(); i++)
 			if(!entlist.contains(ufos.get(i)))
 				ufos.set(i, null);
 //some magic
 		for(Entity e: entlist) {
-//			if((""+e).split("@")[0].equals("Robot"))
+//			if((""+e).split("@")[0].equals("Model.Robot"))
 			if(!astronauts.contains(e) && !ufos.contains(e))
 			robots.add((Robot)e);
 		}
@@ -825,7 +827,7 @@ public class Proto {
 
 	/*
 	* export specific asteroids state
-	* @param aster Asteroid to export (req not-null)
+	* @param aster Model.Asteroid to export (req not-null)
 	*/
 	private static void export_asteroid(Asteroid aster) {
 		int n=asteroidID(aster);
@@ -901,7 +903,7 @@ public class Proto {
 
 	/*
 	* exports specific atronauts state
-	* @param astro Astronaut to export (req not-null)
+	* @param astro Model.Astronaut to export (req not-null)
 	*/
 	private static void export_astronaut(Astronaut astro) {
 		System.out.println("astronaut: "+astronautID(astro));
@@ -933,7 +935,7 @@ public class Proto {
 
 	/*
 	* exports specific gates state
-	* @param ga Gate to export (req not-null)
+	* @param ga Model.Gate to export (req not-null)
 	*/
 	private static void export_gate(Gate ga) {
 		int n=gateID(ga);
@@ -964,7 +966,7 @@ public class Proto {
 
 	/*
 	* exports specific robots state
-	* @param robo Robot to export (req not-null)
+	* @param robo Model.Robot to export (req not-null)
 	*/
 	private static void export_robot(Robot robo) {
 		System.out.println("robot: "+robotID(robo));
@@ -989,7 +991,7 @@ public class Proto {
 
 	/*
 	* exports specific ufos state
-	* @param ufo Ufo to export (req not-null)
+	* @param ufo Model.Ufo to export (req not-null)
 	*/
 	private static void export_ufo(Ufo ufo) {
 		System.out.println("ufo: "+ufoID(ufo));
@@ -1115,10 +1117,6 @@ public class Proto {
 						case S_RUN:
 							inGame(cmd);
 							break;
-		//				case S_OUT:
-		//					break;
-		//				case S_OUT_FULL:
-		//					break;
 					}
 				} catch(java.util.NoSuchElementException e) {run=false;}
 			}

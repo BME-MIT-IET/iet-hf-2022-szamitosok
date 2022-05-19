@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -7,8 +9,8 @@ public class BillOfMaterial {
 	private ArrayList<Material> originalList;
 	
 	/*
-	Constructor, BillOfMaterial-t készít 
-	egy Material Collection alapján
+	Constructor, Model.BillOfMaterial-t készít
+	egy Model.Material Collection alapján
 	és ellenőrizni képes állapotba hozza.
 	NEM támogatja a naplózást
 	*/
@@ -17,7 +19,7 @@ public class BillOfMaterial {
 		reset();
 	}
 	/*
-	isNeeded(Material m) ellenőrzi, hogy 
+	isNeeded(Model.Material m) ellenőrzi, hogy
 	egy anyag rajta van e a listán, ha igen 
 	lehúzza (egyszer)
 	visszatérési értéke a tény, hogy szerepelt e a listán
@@ -25,7 +27,7 @@ public class BillOfMaterial {
 	*/
 	//modell change
 	protected boolean isNeeded(Material m) {
-		Logger.call("BillOfMaterial.isNeeded",""+m);
+		Logger.call("Model.BillOfMaterial.isNeeded",""+m);
 		for(int i=0; i<current.size(); i++) {
 			Material a=current.get(i);
 			if(m.isSameType(a)) {
@@ -45,13 +47,13 @@ public class BillOfMaterial {
 	Támogatja a nalózást
 	*/
 	public void reset() {
-		Logger.call("BillOfMaterial.reset","");
+		Logger.call("Model.BillOfMaterial.reset","");
 		current=new ArrayList<Material>(originalList);
 		Logger.ret("");
 	}
 	
 	/*
-	Collection<Material> checkInventory(Collection<Material> inv) 
+	Collection<Model.Material> checkInventory(Collection<Model.Material> inv)
 	egy olyan függvény, ami ellenőrzi, hogy 
 	egy inventoryban szerepel e minden, ami
 	az ellenőzzőlistán
@@ -62,7 +64,7 @@ public class BillOfMaterial {
 	Támogatja a naplózást
 	*/
 	public Collection<Material> checkInventory(Collection<Material> inv) {
-		Logger.call("BillOfMaterial.checkInventory", "inv="+inv);
+		Logger.call("Model.BillOfMaterial.checkInventory", "inv="+inv);
 		reset();
 		ArrayList<Material> winv=new ArrayList<Material>(inv);
 		for(int i=0; i<winv.size(); i++) {

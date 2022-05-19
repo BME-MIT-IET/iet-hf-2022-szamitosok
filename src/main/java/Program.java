@@ -1,4 +1,7 @@
-import java.util.Scanner; 
+import Model.*;
+import View.MainPanel;
+
+import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ public class Program{
 		a paraméterül kapott aszteroidén van
 		és minden anyagból van 2 a tárolójában
 		hasznos az építős tesztesetekhez
-		mellékhatásaként az Asteroid magja üres lesz
+		mellékhatásaként az Model.Asteroid magja üres lesz
 		NEM támogatja a naplózást
 	*/
 	private static Astronaut bigBackPack(Asteroid asteroid) throws Exception {
@@ -92,13 +95,9 @@ Főbb funkciói:
 			  try {readFile("panic_skeleton.txt");}
 			  catch(Exception e) {e.printStackTrace();}
 			  break;
-		/*case "copyright":
-			  try {readFile("copyright.txt");}
-			  catch(Exception e) {e.printStackTrace();}
-			  break;*/
 		case "1":
 			  moveAstronaut();
-			  System.out.println("Astronaut is on a better place now\n");
+			  System.out.println("Model.Astronaut is on a better place now\n");
 			  break; 
 		case "2":
 				drill();
@@ -119,7 +118,7 @@ Főbb funkciói:
 				break;
 		case "6":
 			  robot();
-			  System.out.println("Robot is ready to go\n");
+			  System.out.println("Model.Robot is ready to go\n");
 			  break;
 		case "7":
 			  portal();
@@ -191,7 +190,7 @@ Főbb funkciói:
 	}
 
 	/*
-	scenario for Asteroid exposion
+	scenario for Model.Asteroid exposion
 	létrehoz egy aszteroidát, rajra
 	egy robottal és egy asztonautával,
 	egy kapuval, ami kapcsolódik egy 
@@ -428,35 +427,6 @@ Főbb funkciói:
 
 
 	public static void main(String args[]) {
-		/*try {
-			System.setIn(new UnClosableDecorator(System.in));
-			
-			Scanner input = new Scanner(System.in);
-			
-			System.out.println("Welcome to the Szoftverprojektlaboratóriumprojekt!\nWanna try? (type yes/no) ");
-			String s = "";
-			s = input.next();
-			chosen(s);
-
-					
-			while(true){
-				
-				s = input.next();
-				//System.out.print("\033[H\033[2J");  //ez clear-eli a terminalt (lehet h windowson nem mukodik)
-			Logger.clear();
-				chosen(s);
-				
-			Logger.print();
-				try{randomAnswer();}catch(Exception e){e.printStackTrace();}
-				
-				
-				
-			}
-			
-		} catch(Exception e) { 
-			e.printStackTrace();
-		}*/
-		
 		MainPanel mp = new MainPanel();
 		mp.setVisible(true);
 	}

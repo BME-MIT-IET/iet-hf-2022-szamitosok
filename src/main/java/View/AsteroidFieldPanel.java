@@ -1,3 +1,8 @@
+package View;
+
+import Model.Asteroid;
+import Model.Game;
+
 import java.awt.CardLayout;
 import java.awt.Dimension;
 
@@ -8,9 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class AsteroidFieldPanel extends JPanel {
@@ -19,14 +22,12 @@ public class AsteroidFieldPanel extends JPanel {
 	
 	
 	public AsteroidFieldPanel(JPanel _mainPanel, Game _game) {
-		//super();
 		game = _game;
 		mainPanel =_mainPanel;
 		try {
 			
 			init();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -43,22 +44,20 @@ public class AsteroidFieldPanel extends JPanel {
 		for(int i = 0; i < numOfAsteroids; i++) {
 			String buttonText = asteroids.get(i).toString();
 			buttonText = buttonText.split("@")[1];
+
 			
-			
-			//JButton button = new JButton((i + 1) + " " + buttonText);
-			
-			JButton button = new JButton("Asteroid " + (i + 1));
+			JButton button = new JButton("Model.Asteroid " + (i + 1));
 			
 			button.addActionListener(
 					new ActionListener() {
-						public void actionPerformed(ActionEvent e) {  
+						public void actionPerformed(ActionEvent e) {
 							JButton b = (JButton) e.getSource();
 							String text = b.getText();
 							String[] splittedText = text.split(" ");
-							
-							int i = Integer.parseInt(splittedText[1]) - 1;   
+
+							int i = Integer.parseInt(splittedText[1]) - 1;
 							showAsteroid(i);
-						} 
+						}
 					}
 			);
 			
