@@ -70,12 +70,13 @@ public class ControlPanel extends JPanel{
           item.addActionListener(new java.awt.event.ActionListener() {
              public void actionPerformed(java.awt.event.ActionEvent evt)
              {
-                int id= Integer.parseInt(item.getName());
+                int id= Integer.parseInt(item.getName().split("p")[0]);
                 mnAstronaut.setText(item.getText());
                 theKivalasztott=astronauts.get(id);
                 selectAstronaut(theKivalasztott);
              }
           });
+          item.setName(i+"playerMI");
           mnAstronaut.add(item);
           selectAstronaut(theKivalasztott);
         }
@@ -138,11 +139,11 @@ public class ControlPanel extends JPanel{
         for(int j=0; j<ideLephetHelyek.size(); j++) {
           Place p = ideLephetHelyek.get(j);
           JMenuItem item = new JMenuItem(nameOfAsteroid(p));
-          item.setName(String.valueOf(j));
+          item.setName(j+"asteroidMI");
           item.addActionListener(new java.awt.event.ActionListener() {
              public void actionPerformed(java.awt.event.ActionEvent evt)
              {
-                int id= Integer.parseInt(item.getName());
+                int id= Integer.parseInt(item.getName().split("a")[0]);
                 mnAster.setText(item.getText());
                 ideLepj=ideLephetHelyek.get(id);
              }
@@ -200,6 +201,7 @@ public class ControlPanel extends JPanel{
       selectPanel.add(menuBar);
 
       mnAstronaut = new JMenu("Model.Astronaut");
+      mnAstronaut.setName("selectPlayerM");
       menuBar.add(mnAstronaut);
     }
     public void initPropertyPanel(){
@@ -216,6 +218,7 @@ public class ControlPanel extends JPanel{
       propertyPanel.add(lblHely);
 
       lblAsterID = new JLabel("");
+      lblAsterID.setName("currentAsteroidL");
       lblAsterID.setBounds(70, 32, 150, 15);
       propertyPanel.add(lblAsterID);
 
@@ -227,6 +230,7 @@ public class ControlPanel extends JPanel{
       propertyPanel.add(kivalasztottCore);
 
       kivalasztottLayer=new JLabel();
+      kivalasztottLayer.setName("kivalasztottLayerL");
       kivalasztottLayer.setBounds(225, 32, 15, 15);
       propertyPanel.add(kivalasztottLayer);
 
@@ -258,8 +262,10 @@ public class ControlPanel extends JPanel{
       operationPanel.add(lblmozgide);
 
       JMenuBar astermenubar = new JMenuBar();
+      astermenubar.setName("menuBar");
 
       mnAster = new JMenu("Model.Asteroid");
+      mnAster.setName("selectAsterM");
       astermenubar.add(mnAster);
 
       astermenubar.setBounds(120, 32, 70, 15);
@@ -301,11 +307,13 @@ public class ControlPanel extends JPanel{
       operationPanel.add(craftMenuBar);
 
       JButton mozogjgomb = new JButton("mozogj");
+      mozogjgomb.setName("mozogjBT");
       mozogjgomb.setMargin(new Insets(0, 0, 0, 0));
       mozogjgomb.setBounds(200, 32, 90, 15);
       operationPanel.add(mozogjgomb);
 
       JButton furjgomb = new JButton("fúrj");
+      furjgomb.setName("furjBT");
       furjgomb.setMargin(new Insets(0, 0, 0, 0));
       furjgomb.setBounds(200, 52, 90, 15);
       operationPanel.add(furjgomb);

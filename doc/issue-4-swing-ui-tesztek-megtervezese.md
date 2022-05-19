@@ -16,7 +16,6 @@ A teszt célja ellenőrizni, hogy annyi játékos szerepel a játékban, amennyi
 
 ### Teszt lépései:
 
-- ComboBox elemszámának ellenőrzése
 - első játékos kiválasztása
 - első játékos nevének ellenőrzése a ComboBox elemen
 
@@ -41,7 +40,7 @@ A teszt célja ellenőrizni, hogy a létrehozott játékos tud-e fúrni.
 ### Teszt lépései:
 
 - játékos kiválasztása
-- játékos nevének ellenőrzése a tulajdonságok panelen
+- játékos nevének ellenőrzése a ComboBox elemen
 - aszteroidakéreg vastagságnak ellenőrzése a tulajdonságok panelen (>=1)
 - fúrás gomb megnyomása
 - játékos kiválasztása
@@ -62,9 +61,8 @@ A teszt célja ellenőrizni, hogy a létrehozott játékos tud-e mozogni.
 ### Teszt lépései:
 
 - játékos kiválasztása
-- játékos nevének ellenőrzése a tulajdonságok panelen
+- játékos nevének ellenőrzése a ComboBox elemen
 - place ComboBox lenyitása
-- ComboBox elemszámának ellenőrzése (>=1)
 - szomszédos aszteroida ComboBox elem választása
 - kiválasztott elem ellenőrzése
 - mozogj gomb megnyomása
