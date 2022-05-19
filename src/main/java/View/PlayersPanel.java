@@ -47,6 +47,7 @@ public class PlayersPanel extends JFrame{
 		//Gomb felvétele
 		JPanel jp_bot = new JPanel();
 		JButton bt_ok = new JButton("OK");
+		bt_ok.setName("okBT");
 		bt_ok.setActionCommand("ok");
 		ButtonActionListener bal = new ButtonActionListener();
 		bt_ok.addActionListener(bal);

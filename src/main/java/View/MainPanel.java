@@ -18,6 +18,7 @@ public class MainPanel extends JFrame {
 	JPanel jp_bot;
 	JTextField tf;
 	JLabel text;
+	PlayersPanel pp;
 
 	public MainPanel() {
 		super("Aszteriodabányászat");
@@ -68,8 +69,7 @@ public class MainPanel extends JFrame {
 							+ "<br/><p style=\"color:red;\">A játékosok számának egy 1 és 5 közötti egész számnak kell lennie!</p></html>");
 					pack();
 				} else {
-					PlayersPanel pp = new PlayersPanel(Integer.parseInt(tf.getText()));
-					pp.setName("playersF");
+					pp = new PlayersPanel(Integer.parseInt(tf.getText()));
 					setVisible(false);
 					pp.setVisible(true);
 				}

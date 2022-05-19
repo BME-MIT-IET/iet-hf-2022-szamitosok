@@ -1,48 +1,104 @@
-import java.io.Console;
+import java.util.ArrayList;
+import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import org.fest.swing.fixture.FrameFixture;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
-import View.MainPanel;
-import View.PlayersPanel;
+import Model.Game;
+import View.AsteroidFieldPanel;
+import View.ControlPanel;
 
 public class UITests {
-    private FrameFixture mainFrameFixture;
-    private FrameFixture playersFrameFicture;
+    private FrameFixture frameFixture;
 
-    @Before
-    public void setUp() {
-        mainFrameFixture = new FrameFixture(new MainPanel()); //create a frame from main panel
-        //playersFrameFicture = new FrameFixture(new PlayersPanel(3)); //create a frame from players panel
+    public void setUp(int n) throws InterruptedException{
+        startGameWithNPlayers(n);
+        frameFixture.show(); //make frame visible
+        Thread.sleep(2000);
+        frameFixture.requireVisible(); //validate frame is visible
     }
 
     @After
     public void tearDown() {
-        mainFrameFixture.cleanUp();
-        //playersFrameFicture.cleanUp();
+        frameFixture.cleanUp();
     }
 
     @Test
-    public void testMainPanelWith3Players() throws InterruptedException {
-        mainFrameFixture.show(); //make frame visible
-        Thread.sleep(2000);
-        mainFrameFixture.requireVisible(); //validate frame is visible
-        mainFrameFixture.textBox("numberOfPlayersTF").setText("3");
-        mainFrameFixture.button("startBT").click();
-        Thread.sleep(5000);
-        mainFrameFixture.requireNotVisible();
+    public void test1() throws InterruptedException {
+        setUp(3);
+        frameFixture.menuItem("selectPlayerM").click();
+        frameFixture.menuItem("0playerMI").click();
+        assert frameFixture.menuItem("selectPlayerM").target.getText().equals("Player1");
+        frameFixture.menuItem("selectPlayerM").click();
+        frameFixture.menuItem("1playerMI").click();
+        assert frameFixture.menuItem("selectPlayerM").target.getText().equals("Player2");
+        frameFixture.menuItem("selectPlayerM").click();
+        frameFixture.menuItem("2playerMI").click();
+        assert frameFixture.menuItem("selectPlayerM").target.getText().equals("Player3");
     }
+
     @Test
-    public void testPlayersPanelWith3Players() throws InterruptedException {
-        playersFrameFicture.show(); //make frame visible
-        Thread.sleep(2000);
-        playersFrameFicture.requireVisible(); //validate frame is visible
-        mainFrameFixture.textBox("PlayerName0TF").setText("Player0");
-        mainFrameFixture.textBox("PlayerName1TF").setText("Player1");
-        mainFrameFixture.textBox("PlayerName2TF").setText("Player2");
-        Thread.sleep(5000);
-        mainFrameFixture.requireNotVisible();
+    public void test2() throws InterruptedException {
+        setUp(1);
+        frameFixture.menuItem("selectPlayerM").click();
+        frameFixture.menuItem("0playerMI").click();
+        assert frameFixture.menuItem("selectPlayerM").target.getText().equals("Player1");
+        int layers =Integer.parseInt(frameFixture.label("kivalasztottLayerL").text());
+        assert layers>=1;
+        frameFixture.button("furjBT").click();
+        frameFixture.menuItem("selectPlayerM").click();
+        frameFixture.menuItem("0playerMI").click();
+        assert frameFixture.menuItem("selectPlayerM").target.getText().equals("Player1");
+        int nextlayers =Integer.parseInt(frameFixture.label("kivalasztottLayerL").text());
+        assert layers>nextlayers;
+    }
+
+    @Test
+    public void test3() throws InterruptedException {
+        setUp(1);
+        frameFixture.menuItem("selectPlayerM").click();
+        frameFixture.menuItem("0playerMI").click();
+        assert frameFixture.menuItem("selectPlayerM").target.getText().equals("Player1");
+        frameFixture.menuItem("selectAsterM").click();
+        frameFixture.menuItem("0asteroidMI").click();
+        String nextAsteroid = frameFixture.menuItem("selectAsterM").target.getText();
+        assert nextAsteroid.split(" ")[0].equals("Model.Asteroid");
+        frameFixture.button("mozogjBT").click();
+        frameFixture.menuItem("selectPlayerM").click();
+        frameFixture.menuItem("0playerMI").click();
+        assert frameFixture.menuItem("selectPlayerM").target.getText().equals("Player1");
+        assert frameFixture.label("currentAsteroidL").text().equals(nextAsteroid);
+    }
+
+    private void startGameWithNPlayers(int n){
+        Game game =  new Game();
+		ArrayList<String> nevek = new ArrayList<String>();
+        for (int i = 0; i < n; i++) {
+            nevek.add("Player"+(i+1));
+        }
+        try {
+            game.start(nevek);
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        JFrame mainFrame = new JFrame();
+        JPanel mainPanel = new JPanel();
+        JPanel gamePanel = new JPanel();
+
+        JPanel controlPanel = new ControlPanel(game, game.getAsteroids());
+
+        mainPanel.setLayout(new CardLayout());
+
+        gamePanel.setLayout(new BorderLayout());
+        gamePanel.add(controlPanel, BorderLayout.EAST);
+        gamePanel.add(new AsteroidFieldPanel(mainPanel, game), BorderLayout.WEST);
+
+        mainPanel.add(gamePanel, "GAMEPANEL");
+        mainFrame.add(mainPanel);
+        mainFrame.pack();
+        frameFixture = new FrameFixture(mainFrame); //create a frame from main panel
     }
 }
